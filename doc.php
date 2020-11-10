@@ -22,6 +22,19 @@
                 for($i = 0; $i < $temp; $i = $i + 1){
                     echo '<option value='.($i + 1).'>'.'Chapter '.($i + 1).' </option>';
                 }
+                //tăng thêm 1 view cho truyện
+                $stmt=$conn->prepare("SELECT * FROM stories WHERE story_id = ". $_GET['id']);
+                $temp = 0;
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while($row = $result->fetch_assoc()) {
+                    $temp = $row['view'];
+                }
+                $temp += 1;
+                $stmt=$conn->prepare("UPDATE stories SET stories.view ='$temp' 
+                                        WHERE story_id = ". $_GET['id']);
+                $stmt->execute();
+                //
                 $conn->close();
             ?>
         </select>
