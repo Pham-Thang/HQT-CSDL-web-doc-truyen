@@ -61,7 +61,7 @@
     }
     else{
         echo'
-            <input type="text" id="textcomment" class="textcomment" />
+            <input type="text" id="textcomment" class="textcomment" style="width: calc(100% - 55px) !important"/>
             <input type="button" id="buttoncomment" onclick="comment()" class="buttoncomment" value="Gửi" />
         ';
     }
